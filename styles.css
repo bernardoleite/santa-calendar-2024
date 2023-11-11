@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: rgb(255, 255, 255); /* Cor de fundo natalícia */
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o título do calendário */
+.calendar-title {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    color: #c44d58; /* Cor natalícia */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    font-family: 'Cursive', cursive; /* Use uma fonte festiva, como "Cursive" */
+}
+
+/* Estilos para o calendário usando CSS Grid */
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Define o tamanho das colunas */
+    gap: 10px; /* Espaço entre as portas */
+    margin-top: 20px;
+    padding: 0 10px; /* Adiciona um espaçamento (padding) ao redor do calendário */
+}
+
+/* Estilos para as portas do calendário */
+.door {
+    display: flex; /* Adiciona display flex */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    width: calc(100% - 20px); /* A largura é 100% menos a margem esquerda e direita */
+    height: 60px; /* Altura fixa das portas */
+    background-color: #e74c3c;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px;
+    margin-right: 0; /* Adicione margem apenas à esquerda para corrigir */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.door:hover {
+    background-color: #c0392b;
+}
+
+/* Adicione este estilo para as portas abertas */
+.door.opened {
+    background-color: #27ae60; /* Cor para portas abertas */
+    cursor: not-allowed; /* Altera o cursor para indicar que a porta já foi aberta */
+    pointer-events: none; /* Impede cliques em portas já abertas */
+}
+
+.content {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #ccc;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.content-inner {
+    text-align: center;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/*
+#prize-image {
+    max-width: 100%;
+    height: auto;
+}
+*/
+
+#prize-text {
+    margin-top: 20px;
+}
+
+
+/* Estilos para o campo de entrada responsivo */
+#username {
+    width: 100%; /* Ocupa toda a largura do contêiner pai */
+    max-width: 300px; /* Defina uma largura máxima para evitar que o campo fique muito largo em telas grandes */
+    padding: 10px; /* Espaçamento interno para melhorar a aparência */
+    box-sizing: border-box; /* Inclui preenchimento na largura total do campo */
+}
+
+/* Estilos para o botão "Salvar" responsivo e com estilo natalício */
+#saveName {
+    width: 150px; /* Largura fixa para o botão */
+    padding: 10px; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui preenchimento na largura total do botão */
+    margin: 10px auto; /* Centralize horizontalmente e adicione margem para espaçamento vertical */
+    background-color: #e74c3c; /* Cor de fundo natalícia (vermelho) */
+    color: #fff; /* Cor do texto */
+    font-size: 18px; /* Tamanho da fonte */
+    border: none; /* Remova a borda */
+    border-radius: 5px; /* Cantos arredondados */
+    cursor: pointer; /* Altere o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease; /* Efeito de transição de cor de fundo */
+}
+
+#saveName:hover {
+    background-color: #c0392b; /* Cor de fundo ao passar o mouse */
+}
