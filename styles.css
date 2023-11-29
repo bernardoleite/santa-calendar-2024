@@ -54,7 +54,6 @@ body {
 .door.opened {
     background-color: #27ae60; /* Cor para portas abertas */
     cursor: not-allowed; /* Altera o cursor para indicar que a porta já foi aberta */
-    pointer-events: none; /* Impede cliques em portas já abertas */
 }
 
 .content {

@@ -1,88 +1,4 @@
-const doors = document.querySelectorAll('.door');
-const content = document.querySelector('.content');
-//const prizeImage = document.getElementById('prize-image');
-const prizeText = document.getElementById('prize-text');
-const closeButton = document.getElementById('close');
-
-doors.forEach((door, index) => {
-    door.addEventListener('click', () => {
-        const doorDate = new Date('2023-12-' + (index + 1));
-        if (doorDate <= currentDate) {
-            const prize = getPrize(index + 1);
-            //prizeImage.src = 'imagem' + (index + 1) + '.jpg';
-            prizeText.textContent = prize;
-            content.style.display = 'block';
-
-            // Atualiza a classe da porta para "opened" imediatamente
-            door.classList.add('opened');
-
-            // Define uma marcação no localStorage indicando que esta porta foi aberta
-            localStorage.setItem(`door${index + 1}`, 'opened');
-        } else {
-            //prizeImage.src = '';
-            prizeText.textContent = "Você só pode abrir portas passadas ou do dia atual.";
-            content.style.display = 'block';
-        }
-    });
-
-    // Verifica o localStorage para determinar se a porta já foi aberta
-    if (localStorage.getItem(`door${index + 1}`) === 'opened') {
-        door.classList.add('opened');
-    }
-});
-
-closeButton.addEventListener('click', () => {
-    content.style.display = 'none';
-
-    // Restaura a cor verde da porta após fechar a janela
-    doors.forEach((door, index) => {
-        if (localStorage.getItem(`door${index + 1}`) === 'opened') {
-            door.classList.add('opened');
-        } else {
-            door.classList.remove('opened');
-        }
-    });
-});
-
-const currentDate = new Date('2023-12-01');
-
-function getPrize(day) {
-    switch (day) {
-        case 1:
-            return "Dia 1! Recebeu uma estrela (⭐).";
-        case 2:
-            return "Feliz Natal!";
-        case 3:
-            return "Feliz Natal!";
-        case 4:
-            return "Feliz Natal!";
-        case 5:
-            return "Feliz Natal!";
-        case 6:
-            return "Feliz Natal!";
-        case 7:
-            return "Feliz Natal!";
-        case 8:
-            return "Feliz Natal!";
-        // Adicione mais casos para os outros dias do Advento
-        default:
-            return "Nada aqui hoje.";
-    }
-}
-
-// Verifica se o nome do usuário já foi armazenado na localStorage
-if (localStorage.getItem('username')) {
-    // Se já foi armazenado, você pode recuperá-lo e usá-lo
-    const savedUsername = localStorage.getItem('username');
-    updateTitle(savedUsername);
-} else {
-    // Se não foi armazenado, você pode coletar o nome do usuário e salvá-lo
-    document.getElementById('saveName').addEventListener('click', () => {
-        const username = document.getElementById('username').value;
-        localStorage.setItem('username', username);
-        updateTitle(username);
-    });
-}
+const currentDate = new Date('2023-12-04');
 
 // Função para atualizar o título com o nome do usuário
 function updateTitle(username) {
@@ -96,33 +12,111 @@ function updateTitle(username) {
 
 // Função para piscar o número do dia atual
 function blinkCurrentDay() {
-    //const currentDate = new Date('2023-12-01'); // Substitua pela data atual
+    const currentDate = new Date('2023-12-04');
     const currentDay = currentDate.getDate();
 
-    // Verifica se a porta do dia atual não foi aberta
     if (localStorage.getItem(`door${currentDay}`) !== 'opened') {
         const currentDoor = document.getElementById(`door${currentDay}`);
         let isBlinkVisible = true;
 
-        // Define um intervalo para alternar a visibilidade do número a cada 500ms (meio segundo)
         const blinkInterval = setInterval(function () {
             if (isBlinkVisible) {
                 currentDoor.style.color = 'transparent';
             } else {
-                currentDoor.style.color = 'white'; // Altere a cor do número para corresponder ao fundo
+                currentDoor.style.color = 'white';
             }
             isBlinkVisible = !isBlinkVisible;
 
-            // Verifica se a porta foi aberta (você deve ter lógica para isso)
             if (localStorage.getItem(`door${currentDay}`) === 'opened') {
-                clearInterval(blinkInterval); // Para o efeito de piscar
-                currentDoor.style.color = 'white'; // Torna o número visível novamente
+                clearInterval(blinkInterval);
+                currentDoor.style.color = 'white';
             }
         }, 500);
     }
 }
 
-// Chame a função para piscar o número do dia atual
-blinkCurrentDay();
+// Função para obter o prêmio com base no dia
+function getPrize(day) {
+    switch (day) {
+        case 1:
+            return `Dia 1! Recebeu uma estrela (⭐).`;
+        case 2:
+            return "Feliz Natal!";
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+            return "Feliz Natal!";
+        // Adicione mais casos para os outros dias do Advento
+        default:
+            return "Nada aqui hoje.";
+    }
+}
 
+// Função para inicializar o calendário
+function initCalendar() {
+    const doors = document.querySelectorAll('.door');
+    const content = document.querySelector('.content');
+    const prizeText = document.getElementById('prize-text');
+    const closeButton = document.getElementById('close');
+    const usernameInput = document.getElementById('username');
+    const saveNameButton = document.getElementById('saveName');
 
+    // Adiciona ouvinte de evento para o botão "Salvar"
+    saveNameButton.addEventListener('click', function () {
+        const username = usernameInput.value;
+        localStorage.setItem('username', username);
+        updateTitle(username);
+    });
+
+    // Adiciona ouvinte de evento para o botão de fechar
+    closeButton.addEventListener('click', function () {
+        content.style.display = 'none';
+
+        doors.forEach((door, index) => {
+            if (localStorage.getItem(`door${index + 1}`) === 'opened') {
+                door.classList.add('opened');
+            } else {
+                door.classList.remove('opened');
+            }
+        });
+    });
+
+    // Adiciona ouvinte de evento para cada porta
+    doors.forEach((door, index) => {
+        door.addEventListener('click', function () {
+            const doorDate = new Date('2023-12-' + (index + 1));
+
+            if (doorDate <= currentDate) {
+                const prize = getPrize(index + 1);
+                prizeText.textContent = prize;
+                content.style.display = 'block';
+                door.classList.add('opened');
+                localStorage.setItem(`door${index + 1}`, 'opened');
+            } else {
+                prizeText.textContent = "Você só pode abrir portas passadas ou do dia atual.";
+                content.style.display = 'block';
+            }
+        });
+
+        // Verifica se a porta já foi aberta ao carregar a página
+        if (localStorage.getItem(`door${index + 1}`) === 'opened') {
+            door.classList.add('opened');
+        }
+    });
+
+    // Chama a função para piscar o número do dia atual
+    blinkCurrentDay();
+}
+
+// Verifica se o nome do usuário já foi armazenado na localStorage ao carregar a página
+document.addEventListener('DOMContentLoaded', function () {
+    if (localStorage.getItem('username')) {
+        updateTitle(localStorage.getItem('username'));
+    }
+});
+
+// Chama a função de inicialização do calendário
+initCalendar();
