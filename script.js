@@ -1,4 +1,4 @@
-const currentDate = new Date('2023-12-04');
+let currentDate = new Date();
 
 // Função para atualizar o título com o nome do usuário
 function updateTitle(username) {
@@ -12,11 +12,10 @@ function updateTitle(username) {
 
 // Função para piscar o número do dia atual
 function blinkCurrentDay() {
-    const currentDate = new Date('2023-12-04');
     const currentDay = currentDate.getDate();
+    const currentDoor = document.getElementById(`door${currentDay}`);
 
-    if (localStorage.getItem(`door${currentDay}`) !== 'opened') {
-        const currentDoor = document.getElementById(`door${currentDay}`);
+    if (currentDoor && localStorage.getItem(`door${currentDay}`) !== 'opened') {
         let isBlinkVisible = true;
 
         const blinkInterval = setInterval(function () {
@@ -87,9 +86,19 @@ function initCalendar() {
     // Adiciona ouvinte de evento para cada porta
     doors.forEach((door, index) => {
         door.addEventListener('click', function () {
-            const doorDate = new Date('2023-12-' + (index + 1));
+            const doorYear = 2023;
+            const doorMonth = 12;
+            const doorDay = index + 1;
+            const doorDate = new Date(doorYear, doorMonth - 1, doorDay);
 
-            if (doorDate <= currentDate) {
+            if (
+                doorDate.getFullYear() < currentDate.getFullYear() ||
+                (doorDate.getFullYear() === currentDate.getFullYear() &&
+                    doorDate.getMonth() < currentDate.getMonth()) ||
+                (doorDate.getFullYear() === currentDate.getFullYear() &&
+                    doorDate.getMonth() === currentDate.getMonth() &&
+                    doorDate.getDate() <= currentDate.getDate())
+            ) {
                 const prize = getPrize(index + 1);
                 prizeText.textContent = prize;
                 content.style.display = 'block';
