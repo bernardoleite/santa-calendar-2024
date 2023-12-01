@@ -38,9 +38,9 @@ function blinkCurrentDay() {
 function getPrize(day) {
     switch (day) {
         case 1:
-            return `Dia 1! Recebeu uma estrela (⭐).`;
+            return `Dia 1 (⭐)! A vida é uma tela. Com que cores a vais pintar hoje?`;
         case 2:
-            return "Feliz Natal!";
+            return "Dia 2";
         case 3:
         case 4:
         case 5:
@@ -105,7 +105,7 @@ function initCalendar() {
                 door.classList.add('opened');
                 localStorage.setItem(`door${index + 1}`, 'opened');
             } else {
-                prizeText.textContent = "Você só pode abrir portas passadas ou do dia atual.";
+                prizeText.textContent = "Que curiosidade! Só é possível abrir portas passadas ou do dia atual.";
                 content.style.display = 'block';
             }
         });
