@@ -40,15 +40,51 @@ function getPrize(day) {
         case 1:
             return `Dia 1 (⭐)! A vida é uma tela. Com que cores a vais pintar hoje?`;
         case 2:
-            return "Dia 2";
+            return "Dia 2! A carregar mensagem...";
         case 3:
+            return "Dia 3! A carregar mensagem...";
         case 4:
+            return "Dia 4! A carregar mensagem...";
         case 5:
+            return "Dia 5! A carregar mensagem...";
         case 6:
+            return "Dia 6! A carregar mensagem...";
         case 7:
+            return "Dia 7! A carregar mensagem...";
         case 8:
-            return "Feliz Natal!";
-        // Adicione mais casos para os outros dias do Advento
+            return "Dia 8! A carregar mensagem...";
+        case 9:
+            return "Dia 9! A carregar mensagem...";
+        case 10:
+            return "Dia 10! A carregar mensagem...";
+        case 11:
+            return "Dia 11! A carregar mensagem...";
+        case 12:
+            return "Dia 12! A carregar mensagem...";
+        case 13:
+            return "Dia 13! A carregar mensagem...";
+        case 14:
+            return "Dia 14! A carregar mensagem...";
+        case 15:
+            return "Dia 15! A carregar mensagem...";
+        case 16:
+            return "Dia 16! A carregar mensagem...";
+        case 17:
+            return "Dia 17! A carregar mensagem...";
+        case 18:
+            return "Dia 18! A carregar mensagem...";
+        case 19:
+            return "Dia 19! A carregar mensagem...";
+        case 20:
+            return "Dia 20! A carregar mensagem...";
+        case 21:
+            return "Dia 21! A carregar mensagem...";
+        case 22:
+            return "Dia 22! A carregar mensagem...";
+        case 23:
+            return "Dia 23! A carregar mensagem...";
+        case 24:
+            return "Dia 24! A carregar mensagem...";
         default:
             return "Nada aqui hoje.";
     }
