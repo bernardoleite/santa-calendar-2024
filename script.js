@@ -122,7 +122,7 @@ function initCalendar() {
     // Adiciona ouvinte de evento para cada porta
     doors.forEach((door, index) => {
         door.addEventListener('click', function () {
-            const doorYear = 2023;
+            const doorYear = 2024;
             const doorMonth = 12;
             const doorDay = index + 1;
             const doorDate = new Date(doorYear, doorMonth - 1, doorDay);
