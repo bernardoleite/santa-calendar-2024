@@ -1,4 +1,11 @@
-let currentDate = new Date();
+// Set to true to enable test mode with a mock date
+const useMockDate = true;
+
+// Define a mock date (e.g., testing November 1, 2024)
+const mockDate = new Date(2024, 10, 1); // Months are 0-based, so 11 is December
+
+// Use the mock date if test mode is enabled; otherwise, use the real date
+const currentDate = useMockDate ? mockDate : new Date();
 
 // Função para atualizar o título com o nome do usuário
 function updateTitle(username) {
@@ -123,7 +130,7 @@ function initCalendar() {
     doors.forEach((door, index) => {
         door.addEventListener('click', function () {
             const doorYear = 2024;
-            const doorMonth = 12;
+            const doorMonth = 11;
             const doorDay = index + 1;
             const doorDate = new Date(doorYear, doorMonth - 1, doorDay);
 
