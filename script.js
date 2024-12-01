@@ -163,12 +163,56 @@ function initCalendar() {
     blinkCurrentDay();
 }
 
+// Function to reset the calendar if there are opened doors
+function resetCalendarForNewYear() {
+    const currentYear = currentDate.getFullYear();
+    const lastAccessedYear = localStorage.getItem('lastAccessedYear');
+    const totalDoors = 24; // Adjust this number based on your calendar
+    let hasOpenedDoors = false;
+    let resetPerformed = false;
+
+    // Check if any door is marked as opened
+    for (let i = 1; i <= totalDoors; i++) {
+        if (localStorage.getItem(`door${i}`) === 'opened') {
+            hasOpenedDoors = true;
+            break;
+        }
+    }
+
+    // If no `lastAccessedYear` exists or it's a new year, handle the reset
+    if (!lastAccessedYear || parseInt(lastAccessedYear, 10) !== currentYear) {
+        if (hasOpenedDoors) {
+            console.log('Opened doors detected. Resetting calendar for the new year.');
+
+            // Clear all doors
+            for (let i = 1; i <= totalDoors; i++) {
+                localStorage.removeItem(`door${i}`);
+            }
+
+            resetPerformed = true; // Mark that a reset occurred
+        }
+
+        // Update the year to the current year
+        localStorage.setItem('lastAccessedYear', currentYear);
+    }
+
+    // Refresh the page if a reset was performed
+    if (resetPerformed) {
+        console.log('Reset performed. Refreshing the page to update.');
+        location.reload(); // Refresh the page to reflect the reset
+    }
+}
+
 // Verifica se o nome do usuário já foi armazenado na localStorage ao carregar a página
 document.addEventListener('DOMContentLoaded', function () {
+    resetCalendarForNewYear();
+
     if (localStorage.getItem('username')) {
         updateTitle(localStorage.getItem('username'));
     }
+
+    // Chama a função de inicialização do calendário
+    initCalendar();
+
 });
 
-// Chama a função de inicialização do calendário
-initCalendar();
