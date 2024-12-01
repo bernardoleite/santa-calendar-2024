@@ -47,9 +47,9 @@ function getPrize(day) {
         case 1:
             return `Dia 1 (⭐)! A vida é uma tela. Com que cores a vais pintar hoje?`;
         case 2:
-            return "Dia 2! A carregar mensagem...";
+            return "Dia 2 (🔔)! Se não puderes fazer tudo, faz tudo o que puderes!";
         case 3:
-            return "Dia 3! A carregar mensagem...";
+            return "Dia 3 (⛄)! Cada fim é um novo começo!";
         case 4:
             return "Dia 4! A carregar mensagem...";
         case 5:
