@@ -1,5 +1,5 @@
 // Set to true to enable test mode with a mock date
-const useMockDate = true;
+const useMockDate = false;
 
 // Define a mock date (e.g., testing November 1, 2024)
 const mockDate = new Date(2024, 10, 1); // Months are 0-based, so 11 is December
@@ -130,7 +130,7 @@ function initCalendar() {
     doors.forEach((door, index) => {
         door.addEventListener('click', function () {
             const doorYear = 2024;
-            const doorMonth = 11;
+            const doorMonth = 12;
             const doorDay = index + 1;
             const doorDate = new Date(doorYear, doorMonth - 1, doorDay);
 
