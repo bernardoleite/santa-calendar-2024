@@ -51,7 +51,7 @@ function getPrize(day) {
         case 3:
             return "Dia 3 (⛄)! Cada fim é um novo começo!";
         case 4:
-            return "Dia 4! A carregar mensagem...";
+            return "Dia 4 (🎁)! A maior prenda da vida és tu!";
         case 5:
             return "Dia 5! A carregar mensagem...";
         case 6:
