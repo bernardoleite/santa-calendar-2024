@@ -65,7 +65,7 @@ function getPrize(day) {
         case 10:
             return "Dia 10! A carregar mensagem...";
         case 11:
-            return "Dia 11! A carregar mensagem...";
+            return "Dia 11 (🫂)! Existem amigos que são casa. Abraça os teus!";
         case 12:
             return "Dia 12! A carregar mensagem...";
         case 13:
