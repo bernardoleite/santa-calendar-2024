@@ -73,7 +73,7 @@ function getPrize(day) {
         case 14:
             return "Dia 14! A carregar mensagem...";
         case 15:
-            return "Dia 15! A carregar mensagem...";
+            return "Dia 15 (💍): Laços de amizade são como anéis moldados no fogo — duradouros, valiosos e únicos. Celebra a amizade!";
         case 16:
             return "Dia 16! A carregar mensagem...";
         case 17:
